@@ -37,5 +37,5 @@ jobs: # 실제 돌아갈 동작
       matrix:
         node-version: [12.x, 14.x, 16.x]
 
-  step:
-    - run: npm test
+    steps:
+      - run: npm test
