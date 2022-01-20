@@ -39,4 +39,12 @@ jobs: # 실제 돌아갈 동작
         node-version: [12.x, 14.x, 16.x]
 
     steps:
+          - uses: actions/checkout@v2 # 플러그인 사용
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci # 정확히 버전 하나만 받고, package.lock은 신경 안 씀
+      - run: npm run build --if-present
       - run: npm test
